@@ -187,6 +187,20 @@ pages:
   only:
   - master
 </code></pre>
+<h2><a class="header" href="#publising-to-second-location" id="publising-to-second-location">Publising to Second Location</a></h2>
+<p>Just to prove how versatile we can be with git, I set up a second location to publish
+the material to, this time on GitHub pages.  I created a new repository with my own account
+called <a href="https://github.com/cookeji/markdown-book">https://github.com/cookeji/markdown-book</a>.  In the repository settings, I went to
+the <code>GitHub Pages</code> section and chose [master branch /docs folder] as the source.
+My <code>Makefile</code> will publish the HTML code to the <code>/docs</code> folder.  So, to publish from there
+I just set up a secondary remote and push to there as follows:</p>
+<pre><code class="language-bash">git remote add secondary1 https://github.com/cookeji/markdown-book
+make
+make publish
+git add -A
+git commit -m &quot;Publish new version of the book&quot;
+git push -f secondary1 master
+</code></pre>
 
                     </main>
 
