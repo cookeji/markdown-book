@@ -1,0 +1,266 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>File System Structure - Guide for https://gitlab.com/jimcooke/markdown-book</title>
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Guide on using the markdown-book repository to quickly set up your markdown documentation repository">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="../favicon.png">
+        <link rel="stylesheet" href="../css/variables.css">
+        <link rel="stylesheet" href="../css/general.css">
+        <link rel="stylesheet" href="../css/chrome.css">
+        <link rel="stylesheet" href="../css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="../FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="../highlight.css">
+        <link rel="stylesheet" href="../tomorrow-night.css">
+        <link rel="stylesheet" href="../ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "../";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="../01.Starting_your_project/HEADER.html"><strong aria-hidden="true">1.</strong> Starting your project</a></li><li><ol class="section"><li class="expanded "><a href="../01.Starting_your_project/01.Inital_Clone.html"><strong aria-hidden="true">1.1.</strong> Initialise New Repository</a></li><li class="expanded "><a href="../01.Starting_your_project/02.File_Structure.html" class="active"><strong aria-hidden="true">1.2.</strong> File System Structure</a></li><li class="expanded "><a href="../01.Starting_your_project/03.Summary_File.html"><strong aria-hidden="true">1.3.</strong> Summary File Generation</a></li><li class="expanded "><a href="../01.Starting_your_project/04.Linting.html"><strong aria-hidden="true">1.4.</strong> Code Linting</a></li><li class="expanded "><a href="../01.Starting_your_project/05.Building.html"><strong aria-hidden="true">1.5.</strong> Building the Book</a></li><li class="expanded "><a href="../01.Starting_your_project/06.Publishing.html"><strong aria-hidden="true">1.6.</strong> Publishing to Pages</a></li></ol></li><li class="expanded "><a href="../02.Use_Cases/HEADER.html"><strong aria-hidden="true">2.</strong> Markdown Doco Use Cases</a></li><li class="expanded "><a href="../10.Markdown/HEADER.html"><strong aria-hidden="true">3.</strong> Markdown Syntax</a></li><li><ol class="section"><li class="expanded "><a href="../10.Markdown/01.General_Formatting.html"><strong aria-hidden="true">3.1.</strong> General Formatting</a></li><li class="expanded "><a href="../10.Markdown/02.Block_Quotes.html"><strong aria-hidden="true">3.2.</strong> Block Quotes</a></li><li class="expanded "><a href="../10.Markdown/03.Lists.html"><strong aria-hidden="true">3.3.</strong> Lists</a></li><li class="expanded "><a href="../10.Markdown/04.Code.html"><strong aria-hidden="true">3.4.</strong> Code</a></li><li class="expanded "><a href="../10.Markdown/05.Links.html"><strong aria-hidden="true">3.5.</strong> Links</a></li><li class="expanded "><a href="../10.Markdown/06.Images.html"><strong aria-hidden="true">3.6.</strong> Images</a></li><li class="expanded "><a href="../10.Markdown/07.Special_Characters.html"><strong aria-hidden="true">3.7.</strong> Special Characters</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Guide for https://gitlab.com/jimcooke/markdown-book</h1>
+
+                        <div class="right-buttons">
+                            <a href="../print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#file-system-structure" id="file-system-structure">File System Structure</a></h1>
+<p>The nice menu structure that mdBook renders is dependent on a file called
+<code>SUMMARY.md</code>.  This repository is a bootstrap to make mdBook accessible to
+the average user and it will build this summary file for you, but the trick
+is you need to adhere to some basic rules to make this simple:</p>
+<!-- markdownlint-disable -->
+<ol>
+<li>The first folder for your markdown documentation after the base level of the repository must be <code>.src</code></li>
+<li>For every folder underneath <code>src</code> represents a tree branch.  Each branch must have a markdown file called <code>HEADER.md</code> which contains a header and, optionally a paragraph.</li>
+<li>It is a good idea to name all your sub-folders with a numeric prefix to denote the order in which you want them to appear in the tree on the left-hand-side in the web view eg. <code>01.Introduction</code></li>
+<li>File and folder names may not contain spaces.  Use underscores, which will render as spaces in HTML published view.</li>
+<li>Apart from the file <code>HEADER.md</code>, you need to write your documentation in <code>*.md*</code> files.  It is a good idea to name them with a numeric prefix to ensure they render in the order you want </li>
+<li>Aside from folders and files, you can have any other types of files in these folders to store images, etc.  Only folders and files suffixed with <code>*.md</code> will be built into the summary file.</li>
+</ol>
+<!-- markdownlint-restore -->
+<h2><a class="header" href="#example" id="example">Example</a></h2>
+<p>An example of how directory and file names will be rendered can be found from
+this repository itself.  At the time of writing, this was the directory and
+file structure and list:</p>
+<pre><code class="language-bash">src
+    01.Starting_your_project/
+         01.Inital_Clone.md
+         02.File_Structure.md
+         03.Linting.md
+         HEADER.md
+  10.Markdown
+        01.General_Formatting.md
+        02.Block_Quotes.md
+        03.Lists.md
+        04.Code.md
+        05.Links.md
+        06.Images.md
+        07.Special_Characters.md
+        HEADER.md
+</code></pre>
+<p>This is what the rendered book menu will look like.</p>
+<p><img src="MenuScreenshot.png" alt="BookMenu" /></p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+                            <a rel="prev" href="../01.Starting_your_project/01.Inital_Clone.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+                        
+
+                        
+                            <a rel="next" href="../01.Starting_your_project/03.Summary_File.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+                    <a href="../01.Starting_your_project/01.Inital_Clone.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+                
+
+                
+                    <a href="../01.Starting_your_project/03.Summary_File.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playpen_line_numbers = true;
+        </script>
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+        <script src="../ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="../elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="../clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="../book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+
+    </body>
+</html>

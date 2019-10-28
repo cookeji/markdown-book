@@ -1,0 +1,671 @@
+<!DOCTYPE HTML>
+<html lang="en" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>Guide for https://gitlab.com/jimcooke/markdown-book</title>
+        
+        <meta name="robots" content="noindex" />
+        
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="Guide on using the markdown-book repository to quickly set up your markdown documentation repository">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="favicon.png">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+        
+
+        
+        <!-- MathJax -->
+        <script async type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = window.matchMedia("(prefers-color-scheme: dark)").matches ? "light" : "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div id="sidebar-scrollbox" class="sidebar-scrollbox">
+                <ol class="chapter"><li class="expanded "><a href="01.Starting_your_project/HEADER.html"><strong aria-hidden="true">1.</strong> Starting your project</a></li><li><ol class="section"><li class="expanded "><a href="01.Starting_your_project/01.Inital_Clone.html"><strong aria-hidden="true">1.1.</strong> Initialise New Repository</a></li><li class="expanded "><a href="01.Starting_your_project/02.File_Structure.html"><strong aria-hidden="true">1.2.</strong> File System Structure</a></li><li class="expanded "><a href="01.Starting_your_project/03.Summary_File.html"><strong aria-hidden="true">1.3.</strong> Summary File Generation</a></li><li class="expanded "><a href="01.Starting_your_project/04.Linting.html"><strong aria-hidden="true">1.4.</strong> Code Linting</a></li><li class="expanded "><a href="01.Starting_your_project/05.Building.html"><strong aria-hidden="true">1.5.</strong> Building the Book</a></li><li class="expanded "><a href="01.Starting_your_project/06.Publishing.html"><strong aria-hidden="true">1.6.</strong> Publishing to Pages</a></li></ol></li><li class="expanded "><a href="02.Use_Cases/HEADER.html"><strong aria-hidden="true">2.</strong> Markdown Doco Use Cases</a></li><li class="expanded "><a href="10.Markdown/HEADER.html"><strong aria-hidden="true">3.</strong> Markdown Syntax</a></li><li><ol class="section"><li class="expanded "><a href="10.Markdown/01.General_Formatting.html"><strong aria-hidden="true">3.1.</strong> General Formatting</a></li><li class="expanded "><a href="10.Markdown/02.Block_Quotes.html"><strong aria-hidden="true">3.2.</strong> Block Quotes</a></li><li class="expanded "><a href="10.Markdown/03.Lists.html"><strong aria-hidden="true">3.3.</strong> Lists</a></li><li class="expanded "><a href="10.Markdown/04.Code.html"><strong aria-hidden="true">3.4.</strong> Code</a></li><li class="expanded "><a href="10.Markdown/05.Links.html"><strong aria-hidden="true">3.5.</strong> Links</a></li><li class="expanded "><a href="10.Markdown/06.Images.html"><strong aria-hidden="true">3.6.</strong> Images</a></li><li class="expanded "><a href="10.Markdown/07.Special_Characters.html"><strong aria-hidden="true">3.7.</strong> Special Characters</a></li></ol></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                
+                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                            
+                        </div>
+
+                        <h1 class="menu-title">Guide for https://gitlab.com/jimcooke/markdown-book</h1>
+
+                        <div class="right-buttons">
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+                
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1><a class="header" href="#starting-your-project" id="starting-your-project">Starting your project</a></h1>
+<p>This repository has been created to help you set up a new documentation repository
+quickly and simply:</p>
+<ul>
+<li>Clone the source repository</li>
+<li>Customise your repository metadata settings (Author, Title, Description)</li>
+<li>Clean up the existing sample documentation and start your own skeleton</li>
+<li>Set up your own local lint checking</li>
+<li>Create a new repository to store your documentation</li>
+<li>Set up CI/CD</li>
+</ul>
+<h1><a class="header" href="#initialise-new-repository" id="initialise-new-repository">Initialise New Repository</a></h1>
+<h2><a class="header" href="#clone-this-repository" id="clone-this-repository">Clone This Repository</a></h2>
+<p>You need to clone this repository and set up your new documentation
+repository.  Do this from your command line.</p>
+<pre><code class="language-bash">git clone https://gitlab.com/jimcooke/markdown-book.git
+BOOKNAME=&quot;mybook&quot;  # Choose your own name here
+mv markdown-book &quot;${BOOKNAME}&quot;
+cd &quot;${BOOKNAME}&quot;
+rm -rf .git      # Remove existing git repository details
+git init         # Create a new git repository
+</code></pre>
+<h2><a class="header" href="#set-up-book-metadata" id="set-up-book-metadata">Set Up Book Metadata</a></h2>
+<p>In the root directory, edit the file <em>book.toml</em> and change the following
+section to start off with</p>
+<pre><code class="language-bash">title = &quot;&lt;Put your own title here&gt;&quot;
+description = &quot;&lt;Put your own brief description here&gt;&quot;
+authors = [&quot;&lt;author names, quote-delimited, comma-separated&gt;&quot;]
+language = &quot;en&quot;
+</code></pre>
+<h2><a class="header" href="#git-prerequisites" id="git-prerequisites">Git Prerequisites</a></h2>
+<p>This is not a git tutorial, so performing a basic tutorial is recommended.<br />
+You should also have a remote git server account that you can push to
+(like GitLab.com or GitHub.com).<br />
+Just as a quick check, you can run the following commands to see if you're all
+set locally.</p>
+<pre><code class="language-bash"># Check your config
+git config --global --list
+
+# Update config if necessary
+git config --global user.name &quot;YOUR_USERNAME&quot;
+git config --global user.email &quot;your_email_address@example.com&quot;
+</code></pre>
+<h2><a class="header" href="#initial-commit" id="initial-commit">Initial Commit</a></h2>
+<p>Before you go too far, make your inital commit and set up your remote repository
+server.</p>
+<pre><code class="language-bash">git add -A
+git commit -m &quot;Initial Commit&quot;
+git remote add origin &lt;git repository path, eg. https://gitlab.com/jimcooke/mybook.git&gt;
+git push origin master
+</code></pre>
+<h1><a class="header" href="#file-system-structure" id="file-system-structure">File System Structure</a></h1>
+<p>The nice menu structure that mdBook renders is dependent on a file called
+<code>SUMMARY.md</code>.  This repository is a bootstrap to make mdBook accessible to
+the average user and it will build this summary file for you, but the trick
+is you need to adhere to some basic rules to make this simple:</p>
+<!-- markdownlint-disable -->
+<ol>
+<li>The first folder for your markdown documentation after the base level of the repository must be <code>.src</code></li>
+<li>For every folder underneath <code>src</code> represents a tree branch.  Each branch must have a markdown file called <code>HEADER.md</code> which contains a header and, optionally a paragraph.</li>
+<li>It is a good idea to name all your sub-folders with a numeric prefix to denote the order in which you want them to appear in the tree on the left-hand-side in the web view eg. <code>01.Introduction</code></li>
+<li>File and folder names may not contain spaces.  Use underscores, which will render as spaces in HTML published view.</li>
+<li>Apart from the file <code>HEADER.md</code>, you need to write your documentation in <code>*.md*</code> files.  It is a good idea to name them with a numeric prefix to ensure they render in the order you want </li>
+<li>Aside from folders and files, you can have any other types of files in these folders to store images, etc.  Only folders and files suffixed with <code>*.md</code> will be built into the summary file.</li>
+</ol>
+<!-- markdownlint-restore -->
+<h2><a class="header" href="#example" id="example">Example</a></h2>
+<p>An example of how directory and file names will be rendered can be found from
+this repository itself.  At the time of writing, this was the directory and
+file structure and list:</p>
+<pre><code class="language-bash">src
+    01.Starting_your_project/
+         01.Inital_Clone.md
+         02.File_Structure.md
+         03.Linting.md
+         HEADER.md
+  10.Markdown
+        01.General_Formatting.md
+        02.Block_Quotes.md
+        03.Lists.md
+        04.Code.md
+        05.Links.md
+        06.Images.md
+        07.Special_Characters.md
+        HEADER.md
+</code></pre>
+<p>This is what the rendered book menu will look like.</p>
+<p><img src="01.Starting_your_project/MenuScreenshot.png" alt="BookMenu" /></p>
+<h1><a class="header" href="#summary-file-generation" id="summary-file-generation">Summary File Generation</a></h1>
+<p>The precursor to rendering your documents nicely in HTML using mdbook is
+to have the SUMMRY.md file generated.  If you have structured your files
+and documents as per the rules in this guide, you just need to execute the
+<code>make_summary.sh</code> script at the root of this project.  It may well throw
+errors if you have:</p>
+<ul>
+<li>Not started your <code>*.md</code> document with a Header-1 <code># Title</code> line</li>
+<li>Any of your file or directory names contain spaces</li>
+<li>Any directory in your tree is missing a <code>HEADER.md</code> file</li>
+</ul>
+<p>If it works properly, it will look like this</p>
+<pre><code class="language-bash">./make_summary.sh
+src/SUMMARY.md built successfully!
+</code></pre>
+<h1><a class="header" href="#code-linting" id="code-linting">Code Linting</a></h1>
+<p>We use  <strong>markdownlint</strong> (<a href="https://github.com/igorshubovych/markdownlint-cli">https://github.com/igorshubovych/markdownlint-cli</a>) to enforce
+good code syntax in our repository.</p>
+<p>If you write your documentation using VSCode, which I recommend, you can install an
+extension to lint-check your <code>*.md</code> files as you write them.  Check out<br />
+<a href="https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint">https://marketplace.visualstudio.com/items?itemName=DavidAnson.vscode-markdownlint</a></p>
+<p>The Markdown markup language is designed to be easy to read, write, and understand.
+It succeeds - and its flexibility is both a benefit and a drawback. Many styles are
+possible, so formatting can be inconsistent. Some constructs don't work well in all
+parsers and should be avoided. For example, here are some common/troublesome Markdown
+constructs.</p>
+<p>markdownlint is a Visual Studio Code extension that includes a library of rules to
+encourage standards and consistency for Markdown files. It is powered by markdownlint
+for Node.js which is based on markdownlint for Ruby.</p>
+<h2><a class="header" href="#installing-markdownlint" id="installing-markdownlint">Installing markdownlint</a></h2>
+<!-- markdownlint-disable -->
+<p><strong>I recommend that you test locally with lint before committing and publishing with CI/CD</strong></p>
+<!-- markdownlint-restore -->
+<p>To install markdownlint for local testing, make sure you have the java packaging tool
+<code>npm</code> installed on your local machine, then
+execute the following.</p>
+<pre><code class="language-bash">npm install -g markdownlint-cli
+</code></pre>
+<h2><a class="header" href="#running-lint-locally" id="running-lint-locally">Running lint locally</a></h2>
+<p>Execute this command from the root of your document repository</p>
+<pre><code class="language-bash">markdownlint src
+</code></pre>
+<h2><a class="header" href="#disabling-lint-rules" id="disabling-lint-rules">Disabling Lint Rules</a></h2>
+<p>Please refer to the markdownlint source repository
+<a href="https://github.com/DavidAnson/markdownlint">https://github.com/DavidAnson/markdownlint</a>
+for a discussion on how to use the <code>options.config</code> file to globally disable a
+particular lint rule that causes you issues (a good example might be MD013 which
+complains if line length is greater than 80).  The <code>markdownlint-cli</code> tool accepts
+an argument <code>-c</code> to point to your config file.</p>
+<p>For the line length example mentioned above, the simple options file to disable the
+rule looks like this</p>
+<pre><code class="language-json">{
+  &quot;MD013&quot;: false
+}
+</code></pre>
+<p>The command to invole the lint check with the suppressed rule is</p>
+<pre><code class="language-bash">markdownlint -c options.config src
+</code></pre>
+<h2><a class="header" href="#tweaking-lint-rules" id="tweaking-lint-rules">Tweaking Lint Rules</a></h2>
+<p>Rather than disabling the line length rule altogether, it migt be a better idea to put
+a reasonable value that picks up excessively long lines without becoming annoying.  A good compromise
+is to set the value to 200.  I find 80 a bit extreme.  This is what my modified options rule
+file looks like:</p>
+<pre><code class="language-json">{
+  &quot;MD013&quot;: {
+    &quot;line_length&quot;: 200
+  }
+}
+</code></pre>
+<h2><a class="header" href="#overriding-lint-in-situ" id="overriding-lint-in-situ">Overriding Lint In Situ</a></h2>
+<p>If you have code that is simply going to have to contain a linting violation,
+one can suppress it by putting the following directives around it.</p>
+<pre><code class="language-markdown">&lt;!-- markdownlint-disable --&gt;
+any violations you want
+&lt;!-- markdownlint-restore --&gt;
+</code></pre>
+<h1><a class="header" href="#building-the-book" id="building-the-book">Building the Book</a></h1>
+<p>This is the bit where we generate the nice static HTML file that can be published
+as a book.  When we build for production CI/CD, I use a docker container called
+<strong>hrektts/mdbook</strong>.</p>
+<p><strong>To emphasise again, it is better to build and test locally before one commits</strong>, hence
+I recommend installing rust's mdbook locally on your machine.  The repository for
+the Rust code is <a href="https://rust-lang-nursery.github.io/mdBook/cli/index.html">https://rust-lang-nursery.github.io/mdBook/cli/index.html</a> but it
+is easier just to install from their released binaries at<br />
+<a href="https://github.com/rust-lang-nursery/mdBook/releases">https://github.com/rust-lang-nursery/mdBook/releases</a></p>
+<h2><a class="header" href="#build-for-publishing" id="build-for-publishing">Build for Publishing</a></h2>
+<p>By default, mdbook will build the HTML into a directory called <code>book</code>.  I change
+this to <code>public</code> so I can publish on git pages.  The build command I use from the
+root of the repository is:</p>
+<pre><code class="language-bash">mdbook build --dest-dir public
+</code></pre>
+<h2><a class="header" href="#serving-locally" id="serving-locally">Serving Locally</a></h2>
+<p>mdbook can also serve your pages locally.  To do this, execute the following command
+from the root of your repository:</p>
+<pre><code class="language-bash">mdbook serve --dest-dir public
+</code></pre>
+<p>Then view your book at <a href="http://localhost:3000">http://localhost:3000</a></p>
+<h1><a class="header" href="#publishing-to-pages" id="publishing-to-pages">Publishing to Pages</a></h1>
+<p>These are instructions for GitLab, which I now prefer over GitHub.  By default
+when you publish to <code>pages</code> GitLab, the URL will be</p>
+<!-- markdownlint-disable -->
+<p><strong>http://&lt;username&gt;.gitlab.io/&lt;repository&gt;/</strong></p>
+<!-- markdownlint-restore -->
+<p>For this repository, the pages location is
+<a href="https://jimcooke.gitlab.io/markdown-book/">https://jimcooke.gitlab.io/markdown-book/</a></p>
+<h2><a class="header" href="#gitlab-cicd" id="gitlab-cicd">GitLab CI/CD</a></h2>
+<p>Our demo deployment is controlled by GitLab CI/CD.  Our repository ignores the <code>public</code> folder in <code>.gitignore</code>.
+Instead, the following CI pipeline has been defined in the repository root in file '.gitignore`.  Basically it just:</p>
+<ul>
+<li>Starts an <em>mdbook</em> container from docker hub</li>
+<li>Installs markdownlint</li>
+<li>Builds the summary file</li>
+<li>Lint-checks the document</li>
+<li>Builds the HTML document</li>
+<li>Publishes the resulting artefact to pages</li>
+</ul>
+<pre><code class="language-bash">image: hrektts/mdbook:latest
+
+pages:
+  stage: deploy
+  script:
+  - apt-get update
+  - apt-get -y install curl
+  - curl -sL https://deb.nodesource.com/setup_6.x | bash -
+  - apt-get -y install -y nodejs
+  - apt-get -y install -y npm
+  - npm install -g markdownlint-cli
+  - ./make_summary.sh
+  - markdownlint -c options.config src
+  - mdbook build --dest-dir public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
+</code></pre>
+<h1><a class="header" href="#markdown-doco-use-cases" id="markdown-doco-use-cases">Markdown Doco Use Cases</a></h1>
+<p>Markdown documentation is a useful tool to have at your disposal.  It is particularly suited for
+documenting existing git repositories as it is a logical place to keep your documentation ... right
+alongside your code.</p>
+<h2><a class="header" href="#advantages-over-confluence" id="advantages-over-confluence">Advantages over Confluence</a></h2>
+<ul>
+<li>Able to keep local copies on your own workstation and publish to multiple sites</li>
+<li>Can serve the pages locally from your PC</li>
+<li>If implemented properly, consistent formatting and lint checking</li>
+</ul>
+<h2><a class="header" href="#disadvantages-with-confluence" id="disadvantages-with-confluence">Disadvantages with Confluence</a></h2>
+<ul>
+<li>No WYSIWYG editor.  There is a learning curve</li>
+<li>Generally git markdown more restrictive access to modify code, but easy to make it world-readable in pages</li>
+</ul>
+<h1><a class="header" href="#markdown-syntax" id="markdown-syntax">Markdown Syntax</a></h1>
+<p>This chapter is dedicated to some basic markdown formatting, as well as a couple
+of for things like escaping special characters.</p>
+<p>A good external reference for this is <a href="https://www.markdownguide.org/basic-syntax/">https://www.markdownguide.org/basic-syntax/</a></p>
+<h1><a class="header" href="#general-formatting" id="general-formatting">General Formatting</a></h1>
+<h2><a class="header" href="#headers" id="headers">Headers</a></h2>
+<pre><code class="language-markdown"># Heading Level 1
+## Heading Level 2
+### Heading Level 3
+#### Heading Level 4
+##### Heading Level 5
+###### Heading Level 6
+</code></pre>
+<p>Alternative notation for Heading Levels 1 and 2</p>
+<pre><code class="language-markdown">Heading Level 1
+===============
+
+Heading Level 2
+---------------
+</code></pre>
+<h2><a class="header" href="#paragraphs" id="paragraphs">Paragraphs</a></h2>
+<p>To create paragraphs, use a blank line to separate one or more lines of text.
+You should not indent paragraphs with spaces or tabs.</p>
+<h2><a class="header" href="#line-breaks" id="line-breaks">Line Breaks</a></h2>
+<p>To create a line break (like on this example line), you<br />
+end the line with 2 or more spaces.</p>
+<h2><a class="header" href="#font-formatting" id="font-formatting">Font Formatting</a></h2>
+<h3><a class="header" href="#bold-text" id="bold-text">Bold Text</a></h3>
+<p>Text is rendered as bold by being escaped by double-asterisks or double-underscores</p>
+<pre><code class="language-markdown">This will be rendered as **bold** text
+This will also be rendered as __bold__ text
+</code></pre>
+<h3><a class="header" href="#italic-text" id="italic-text">Italic Text</a></h3>
+<p>Text is rendered as italic by being escaped by single-asterisks or single-underscores</p>
+<pre><code class="language-markdown">This will be rendered as *italic* text
+This will also be rendered as _italic_ text
+</code></pre>
+<h3><a class="header" href="#bold-italic-text" id="bold-italic-text">Bold Italic Text</a></h3>
+<p>Text is rendered as bold and italic by being escaped by triple-asterisks or triple-underscores</p>
+<pre><code class="language-markdown">This will be rendered as ***bold italic*** text
+This will also be rendered as ___bold italic___ text
+</code></pre>
+<h2><a class="header" href="#horizontal-lines" id="horizontal-lines">Horizontal Lines</a></h2>
+<p>To create a horizontal rule, use three or more asterisks (***), dashes (---), or
+underscores (___) on a line by themselves.</p>
+<pre><code class="language-markdown">***
+---
+_________________
+</code></pre>
+<hr />
+<h1><a class="header" href="#block-quotes" id="block-quotes">Block Quotes</a></h1>
+<p>To create a blockquote, add a &gt; in front of a paragraph.
+Block quotes can contain multiple paragraphs. Add a &gt; on the blank lines between
+the paragraphs.</p>
+<p>Blockquotes can contain other Markdown formatted elements. Not all elements
+can be used, you will need to experiment to see which ones work.</p>
+<pre><code class="language-markdown">&gt; This is the source for a block quote
+</code></pre>
+<blockquote>
+<p>This is what the block quote looks like</p>
+<p>This is a line after a blank line</p>
+</blockquote>
+<p>Block quotes can be nested with multiple &gt;&gt; characters</p>
+<blockquote>
+<p>This is the outer block</p>
+<blockquote>
+<p>This is an inner block
+Back to the outer block</p>
+</blockquote>
+</blockquote>
+<h1><a class="header" href="#lists" id="lists">Lists</a></h1>
+<h2><a class="header" href="#ordered-lists" id="ordered-lists">Ordered Lists</a></h2>
+<p>To create an ordered list, add line items with numbers followed by periods. The
+numbers don’t have to be in numerical order, but the list should start with the
+number one.</p>
+<pre><code class="language-markdown">1. First item
+2. Second item
+3. Third item
+4. Fourth item
+</code></pre>
+<ol>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+<li>Fourth item</li>
+</ol>
+<h2><a class="header" href="#unordered-lists" id="unordered-lists">Unordered Lists</a></h2>
+<p>To create an unordered list, add dashes (-), asterisks (*), or plus signs (+)
+in front of line items.  Indent one or more items to create a nested list.</p>
+<pre><code class="language-markdown">* First item
+* Second item
+* Third item
+* Fourth item
+</code></pre>
+<ul>
+<li>First item</li>
+<li>Second item</li>
+<li>Third item</li>
+<li>Fourth item</li>
+</ul>
+<h2><a class="header" href="#list-elements" id="list-elements">List Elements</a></h2>
+<p>To add another element in a list while preserving the continuity of the list,
+indent the element four spaces or one tab.  The following elements work within
+a list:</p>
+<ul>
+<li>Paragraphs</li>
+<li>Blockquotes</li>
+<li>Code Blocks</li>
+<li>Images</li>
+</ul>
+<h1><a class="header" href="#code" id="code">Code</a></h1>
+<p>To denote a word or phrase as code, enclose it in tick marks (`).</p>
+<pre><code class="language-markdown">At the command prompt, type `nano`.
+</code></pre>
+<p>At the command prompt, type <code>nano</code>.</p>
+<h2><a class="header" href="#code-blocks-fenced" id="code-blocks-fenced">Code Blocks (Fenced)</a></h2>
+<p>Use three backticks (```) on the lines before and after the code to
+depict the code as a code block.</p>
+<pre><code class="language-markdown">{
+  &quot;firstName&quot;: &quot;John&quot;,
+  &quot;lastName&quot;: &quot;Smith&quot;,
+  &quot;a
+}
+</code></pre>
+<h1><a class="header" href="#links" id="links">Links</a></h1>
+<p>To create a link, enclose the link text in brackets (e.g., [Duck Duck Go])
+and then follow it immediately with the URL in parentheses (e.g., (<a href="https://duckduckgo.com">https://duckduckgo.com</a>)).</p>
+<pre><code class="language-markdown">My favorite search engine is [Duck Duck Go](https://duckduckgo.com).
+</code></pre>
+<p>My favorite search engine is <a href="https://duckduckgo.com">Duck Duck Go</a>.</p>
+<h2><a class="header" href="#link-titles" id="link-titles">Link Titles</a></h2>
+<p>You can optionally add a title for a link. This will appear as a tooltip when the
+user hovers over the link. To add a title, enclose it in parentheses after the URL.</p>
+<pre><code class="language-markdown">My favorite search engine is [Duck Duck Go](https://duckduckgo.com &quot;For privacy&quot;).
+</code></pre>
+<p>My favorite search engine is <a href="https://duckduckgo.com" title="The best search engine for privacy">Duck Duck Go</a>.</p>
+<h2><a class="header" href="#urls-and-email-addresses" id="urls-and-email-addresses">URLs and Email Addresses</a></h2>
+<p>To quickly turn a URL or email address into a link, enclose it in angle brackets.</p>
+<pre><code class="language-markdown">&lt;https://www.markdownguide.org&gt;
+&lt;fake@example.com&gt;
+</code></pre>
+<p><a href="https://www.markdownguide.org">https://www.markdownguide.org</a>
+<a href="mailto:10.Markdown/fake@example.com">fake@example.com</a></p>
+<h2><a class="header" href="#formatting-links" id="formatting-links">Formatting Links</a></h2>
+<p>You can format links as bold or italic in the same way as normal text.</p>
+<h1><a class="header" href="#images" id="images">Images</a></h1>
+<h2><a class="header" href="#url-link-images" id="url-link-images">URL Link Images</a></h2>
+<pre><code class="language-markdown"># Markdown syntax
+![alt text](&lt;URL&gt;)
+</code></pre>
+<p><img src="https://homepages.cae.wisc.edu/%7Eece533/images/airplane.png" alt="alt text" /></p>
+<h2><a class="header" href="#local-images" id="local-images">Local Images</a></h2>
+<pre><code class="language-markdown"># Markdown syntax
+![alt text](&lt;location&gt;)
+</code></pre>
+<p><img src="10.Markdown/NetworkDiagram.png" alt="Network" /></p>
+<h1><a class="header" href="#special-characters" id="special-characters">Special Characters</a></h1>
+<p>There are special characters like square brackets that are interpreted as markdown
+syntax and need to be escaped properly.  I tend to steer away from using escape
+characters as it quickly becomes doubly-confusing if you have to escape the escape
+character itself, or other edge cases you may encounter.  Instead, I prefer to use
+the decimal ascii codes and get finished with it.</p>
+<p>Here are some common ones</p>
+<table><thead><tr><th>Character</th><th align="right">Markdown Ascii</th><th>Name</th></tr></thead><tbody>
+<tr><td>TAB</td><td align="right"><code>&amp;#9;</code></td><td>Tab</td></tr>
+<tr><td>LF (linefeed)</td><td align="right"><code>&amp;#10;</code></td><td>Line feed</td></tr>
+<tr><td>CR (carriage return)</td><td align="right"><code>&amp;#13;</code></td><td>Carriage return</td></tr>
+<tr><td>|</td><td align="right"><code>&amp;#124;</code></td><td>Pipe or vertical bar</td></tr>
+<tr><td>&quot;</td><td align="right"><code>&amp;#34;</code></td><td>double-quote</td></tr>
+<tr><td>'</td><td align="right"><code>&amp;#39;</code></td><td>single-quote</td></tr>
+<tr><td>&lt;</td><td align="right"><code>&amp;#60;</code></td><td>left angle-bracket</td></tr>
+<tr><td>&gt;</td><td align="right"><code>&amp;#62;</code></td><td>right angle-bracket</td></tr>
+<tr><td>@</td><td align="right"><code>&amp;#64;</code></td><td>at</td></tr>
+<tr><td>[</td><td align="right"><code>&amp;#91;</code></td><td>left square-bracket</td></tr>
+<tr><td>]</td><td align="right"><code>&amp;#93;</code></td><td>right square-bracket</td></tr>
+<tr><td>^</td><td align="right"><code>&amp;#94;</code></td><td>caret</td></tr>
+<tr><td>`</td><td align="right"><code>&amp;#96;</code></td><td>backtick</td></tr>
+<tr><td>{</td><td align="right"><code>&amp;#123;</code></td><td>left curly-brace</td></tr>
+<tr><td>}</td><td align="right"><code>&amp;#125;</code></td><td>right curly-brace</td></tr>
+<tr><td>~</td><td align="right"><code>&amp;#126;</code></td><td>tilde</td></tr>
+</tbody></table>
+<h2><a class="header" href="#units" id="units">Units</a></h2>
+<table><thead><tr><th>Character</th><th align="right">Markdown Decimal</th><th>Name</th></tr></thead><tbody>
+<tr><td>°</td><td align="right"><code>&amp;deg;</code></td><td>Degrees</td></tr>
+</tbody></table>
+<h2><a class="header" href="#vulgar-fractions" id="vulgar-fractions">Vulgar Fractions</a></h2>
+<table><thead><tr><th>Character</th><th align="right">Markdown Decimal</th><th>Name</th></tr></thead><tbody>
+<tr><td>¼</td><td align="right"><code>&amp;#188;</code></td><td>One Quarter</td></tr>
+<tr><td>½</td><td align="right"><code>&amp;#189;</code></td><td>One Half</td></tr>
+<tr><td>¾</td><td align="right"><code>&amp;#190;</code></td><td>Three Quarters</td></tr>
+<tr><td>⁄</td><td align="right"><code>&amp;#8260;</code></td><td>Slash</td></tr>
+<tr><td>⅐</td><td align="right"><code>&amp;#8528;</code></td><td>One Seventh</td></tr>
+<tr><td>⅑</td><td align="right"><code>&amp;#8529;</code></td><td>One Ninth</td></tr>
+<tr><td>⅒</td><td align="right"><code>&amp;#8530;</code></td><td>One Tenth</td></tr>
+<tr><td>⅓</td><td align="right"><code>&amp;#8531;</code></td><td>One Third</td></tr>
+<tr><td>⅔</td><td align="right"><code>&amp;#8532;</code></td><td>Two Thirds</td></tr>
+<tr><td>⅕</td><td align="right"><code>&amp;#8533;</code></td><td>One Fifth</td></tr>
+<tr><td>⅖</td><td align="right"><code>&amp;#8534;</code></td><td>Two Fifths</td></tr>
+<tr><td>⅗</td><td align="right"><code>&amp;#8535;</code></td><td>Three Fifths</td></tr>
+<tr><td>⅘</td><td align="right"><code>&amp;#8536;</code></td><td>Four Fifths</td></tr>
+<tr><td>⅙</td><td align="right"><code>&amp;#8537;</code></td><td>One Sixth</td></tr>
+<tr><td>⅚</td><td align="right"><code>&amp;#8538;</code></td><td>Five Sixths</td></tr>
+<tr><td>⅛</td><td align="right"><code>&amp;#8539;</code></td><td>One Eighth</td></tr>
+<tr><td>⅜</td><td align="right"><code>&amp;#8540;</code></td><td>Three Eighths</td></tr>
+<tr><td>⅝</td><td align="right"><code>&amp;#8541;</code></td><td>Five Eighths</td></tr>
+<tr><td>⅞</td><td align="right"><code>&amp;#8542;</code></td><td>Seven Eighths</td></tr>
+</tbody></table>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                        
+
+                        
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                
+
+                
+            </nav>
+
+        </div>
+
+        
+
+        
+
+        
+        <script type="text/javascript">
+            window.playpen_line_numbers = true;
+        </script>
+        
+        
+        
+        <script type="text/javascript">
+            window.playpen_copyable = true;
+        </script>
+        
+
+        
+        <script src="ace.js" type="text/javascript" charset="utf-8"></script>
+        <script src="editor.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mode-rust.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-dawn.js" type="text/javascript" charset="utf-8"></script>
+        <script src="theme-tomorrow_night.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+        
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+        
+
+        
+        
+        <script type="text/javascript">
+        window.addEventListener('load', function() {
+            MathJax.Hub.Register.StartupHook('End', function() {
+                window.setTimeout(window.print, 100);
+            });
+        });
+        </script>
+        
+        
+
+    </body>
+</html>

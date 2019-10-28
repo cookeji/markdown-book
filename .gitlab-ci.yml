@@ -1,0 +1,19 @@
+image: hrektts/mdbook:latest
+
+pages:
+  stage: deploy
+  script:
+  - apt-get update
+  - apt-get -y install curl
+  - curl -sL https://deb.nodesource.com/setup_6.x | bash -
+  - apt-get -y install -y nodejs
+  - apt-get -y install -y npm
+  - npm install -g markdownlint-cli
+  - ./make_summary.sh
+  - markdownlint -c options.config src 
+  - mdbook build --dest-dir public
+  artifacts:
+    paths:
+    - public
+  only:
+  - master
