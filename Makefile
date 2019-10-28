@@ -1,10 +1,10 @@
-default: test
+default: publish
 
 test:
 	./make_summary.sh
 	markdownlint -c options.config src
 
-publish:
+publish: test
 	mdbook build --dest-dir docs
 
 serve:
